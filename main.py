@@ -3,7 +3,7 @@
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 
 from ceojuice_client import CEOJuiceClient
 from ai_engine import (
