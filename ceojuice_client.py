@@ -45,8 +45,11 @@ class CEOJuiceClient:
     ) -> dict:
         url = f"{self.base_url}/Process/{process_id}/Readings"
         payload = readings or []
-        resp = requests.post(url, json=payload, headers=self._headers
-        (process_id))
+        resp = requests.post(
++            url,
++            json=payload,
++            headers=self._headers(process_id),
++        )
         resp.raise_for_status()
         return resp.json()
 
