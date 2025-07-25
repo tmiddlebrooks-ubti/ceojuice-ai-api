@@ -53,7 +53,7 @@ class CEOJuiceClient:
         )
         resp.raise_for_status()
         return resp.json()
-        
+
     def get_service_calls(
         self,
         process_id: int = 136,
