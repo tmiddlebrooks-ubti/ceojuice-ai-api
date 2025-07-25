@@ -64,7 +64,13 @@ def get_meter_data():
 
 
 @app.post("/ai/id968/post-meter")
-def post_meter_readings(readings: list):
+def post_meter_readings(
+    readings: list = Body(
+        ...,
+        description="List of meter readings to submit",
+        example=[{"meterValue": 1234, "serial": "ABC123"}],
+    )
+):
     try:
         result = client.post_meter_readings(
             process_id=968,
