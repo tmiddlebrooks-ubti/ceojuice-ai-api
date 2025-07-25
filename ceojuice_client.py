@@ -20,12 +20,20 @@ class CEOJuiceClient:
             "Content-Type": "application/json",
         }
 
-    def get_survey_comments(
+def get_survey_comments(
         self,
-        process_id: int = 125,
+        qty: int = 100,
     ) -> list:
-        url = f"{self.base_url}/Process/{process_id}/Comments"
-        resp = requests.get(url, headers=self._headers(process_id))
+        """
+        Fetch favorite (liked) survey comments via ID125 (SurveyComments feed).
+        """
+        url = f"{self.base_url}/api/Processes/SurveyComments"
+        params = {
+            "CustomerNumber": self.customer_id,
+            "AuthKey": self.api_keys.get("125"),
+            "qty": qty,
+        }
+        resp = requests.get(url, params=params)
         resp.raise_for_status()
         return resp.json()
 
@@ -41,7 +49,7 @@ class CEOJuiceClient:
     def post_meter_readings(
         self,
         process_id: int = 968,
-        readings: list | None = None,
+        readings: list = None,
     ) -> dict:
         url = f"{self.base_url}/Process/{process_id}/Readings"
         payload = readings or []

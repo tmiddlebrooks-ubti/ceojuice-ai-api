@@ -13,9 +13,7 @@ from ai_engine import (
     summarize_service_calls,
 )
 
-
 load_dotenv()
-
 
 CUSTOMER_ID = os.getenv("CUSTOMER_ID")
 API_KEY_ID125 = os.getenv("API_KEY_ID125")
@@ -23,7 +21,6 @@ API_KEY_ID29 = os.getenv("API_KEY_ID29")
 API_KEY_ID968 = os.getenv("API_KEY_ID968")
 API_KEY_ID136 = os.getenv("API_KEY_ID136")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
 
 client = CEOJuiceClient(
     customer_id=CUSTOMER_ID,
@@ -34,7 +31,6 @@ client = CEOJuiceClient(
         "136": API_KEY_ID136,
     },
 )
-
 
 app = FastAPI()
 
