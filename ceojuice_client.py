@@ -41,18 +41,19 @@ class CEOJuiceClient:
     def post_meter_readings(
         self,
         process_id: int = 968,
-        readings: list = None,
+        readings: list | None = None,
     ) -> dict:
         url = f"{self.base_url}/Process/{process_id}/Readings"
         payload = readings or []
+
         resp = requests.post(
-+            url,
-+            json=payload,
-+            headers=self._headers(process_id),
-+        )
+            url,
+            json=payload,
+            headers=self._headers(process_id),
+        )
         resp.raise_for_status()
         return resp.json()
-
+        
     def get_service_calls(
         self,
         process_id: int = 136,
