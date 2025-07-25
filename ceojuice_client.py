@@ -20,7 +20,7 @@ class CEOJuiceClient:
             "Content-Type": "application/json",
         }
 
-def get_survey_comments(
+    def get_survey_comments(
         self,
         qty: int = 100,
     ) -> list:
